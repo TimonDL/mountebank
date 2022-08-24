@@ -121,6 +121,7 @@ function create (protocols, imposters, logger, allowInjection) {
     async function post (request, response) {
         logger.debug(requestDetails(request));
 
+        console.time(`post_${request.socket.remotePort}`);
         const validation = await validate(request.body);
         const protocol = request.body.protocol;
 
@@ -141,6 +142,7 @@ function create (protocols, imposters, logger, allowInjection) {
         else {
             respondWithValidationErrors(response, validation.errors);
         }
+        console.timeEnd(`post_${request.socket.remotePort}`);
     }
 
     /**
