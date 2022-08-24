@@ -121,9 +121,7 @@ function create (protocols, imposters, logger, allowInjection) {
     async function post (request, response) {
         logger.debug(requestDetails(request));
 
-        console.time('validate_' + request.socket.remotePort);
         const validation = await validate(request.body);
-        console.timeEnd('validate_' + request.socket.remotePort);
         const protocol = request.body.protocol;
 
         if (validation.isValid) {

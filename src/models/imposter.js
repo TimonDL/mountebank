@@ -138,9 +138,11 @@ async function create (Protocol, creationRequest, baseLogger, config, isAllowedC
             await stubs.addRequest(request);
         }
 
-        const match = await findFirstMatch(request),
-            observeResponseGenerationDuration = metrics.responseGenerationDuration.startTimer(),
-            responseConfig = await match.stub.nextResponse();
+        console.time('findFirstMatch_' + request.path);
+        const match = await findFirstMatch(request);
+        console.time('findFirstMatch_' + request.path);
+        const observeResponseGenerationDuration = metrics.responseGenerationDuration.startTimer();
+        const responseConfig = await match.stub.nextResponse();
 
         logger.debug(`generating response from ${JSON.stringify(responseConfig)}`);
         const response = await resolver.resolve(responseConfig, request, logger, imposterState, requestDetails);
