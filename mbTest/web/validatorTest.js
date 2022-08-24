@@ -5,6 +5,8 @@ const assert = require('assert'),
     api = require('../api').create(),
     httpClient = require('../baseHttpClient').create('http');
 
+w3cjs.setW3cCheckUrl('https://validator.w3.org/nu/');
+
 function assertValid (path, html) {
     return new Promise(resolve => {
         w3cjs.validate({

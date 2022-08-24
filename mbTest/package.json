@@ -27,18 +27,19 @@
         "express": "4.17.3",
         "fs-extra": "10.0.0",
         "hpagent": "0.1.2",
-        "jsdom": "17.0.0",
-        "mocha": "9.2.1",
+        "jsdom": "20.0.0",
+        "mocha": "10.0.0",
         "mocha-multi-reporters": "1.5.1",
         "mountebank": "file:..",
         "nc": "1.0.3",
-        "nodemailer": "6.7.2",
+        "nodemailer": "6.7.8",
         "safe-stable-stringify": "2.3.1",
         "w3cjs": "0.4.0",
         "xpath": "0.0.32"
     },
     "engines": {
-        "node": ">=12"
+        "node": ">=14",
+        "npm": "~6"
     },
     "files": [
         "api",
