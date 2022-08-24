@@ -141,7 +141,7 @@ async function create (Protocol, creationRequest, baseLogger, config, isAllowedC
         let r = Math.random();
         console.time('findFirstMatch_' + r + '_' + request.path);
         const match = await findFirstMatch(request);
-        console.time('findFirstMatch_' + r + '_' + request.path);
+        console.timeEnd('findFirstMatch_' + r + '_' + request.path);
         const observeResponseGenerationDuration = metrics.responseGenerationDuration.startTimer();
         const responseConfig = await match.stub.nextResponse();
 
