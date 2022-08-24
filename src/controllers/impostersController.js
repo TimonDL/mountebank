@@ -120,8 +120,11 @@ function create (protocols, imposters, logger, allowInjection) {
      */
     async function post (request, response) {
         logger.debug(requestDetails(request));
-        const validation = await validate(request.body),
-            protocol = request.body.protocol;
+
+        console.time('validate_' + requestDetails(request));
+        const validation = await validate(request.body);
+        console.timeEnd('validate_' + requestDetails(request));
+        const protocol = request.body.protocol;
 
         if (validation.isValid) {
             try {
