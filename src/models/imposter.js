@@ -138,9 +138,10 @@ async function create (Protocol, creationRequest, baseLogger, config, isAllowedC
             await stubs.addRequest(request);
         }
 
-        console.time('findFirstMatch_' + request.path);
+        let r = Math.random();
+        console.time('findFirstMatch_' + r + '_' + request.path);
         const match = await findFirstMatch(request);
-        console.time('findFirstMatch_' + request.path);
+        console.time('findFirstMatch_' + r + '_' + request.path);
         const observeResponseGenerationDuration = metrics.responseGenerationDuration.startTimer();
         const responseConfig = await match.stub.nextResponse();
 
