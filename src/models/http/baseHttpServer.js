@@ -120,7 +120,8 @@ module.exports = function (createBaseServer) {
 
             logger.info(`${clientName} => ${request.method} ${request.url}`);
 
-            console.time(`request_${Math.random()}_${request.method}_${request.url}`);
+            let r = Math.random();
+            console.time(`request_${r}_${request.method}_${request.url}`);
             try {
                 const simplifiedRequest = await require('./httpRequest').createFrom(request);
                 logger.debug('%s => %s', clientName, JSON.stringify(simplifiedRequest));
@@ -151,7 +152,7 @@ module.exports = function (createBaseServer) {
                 response.writeHead(500, { 'content-type': 'application/json' });
                 response.end(JSON.stringify({ errors: [exceptions.details(error)] }), 'utf8');
             }
-            console.timeEnd(`request_${Math.random()}_${request.method}_${request.url}`);
+            console.timeEnd(`request_${r}_${request.method}_${request.url}`);
         });
 
         return new Promise((resolve, reject) => {
